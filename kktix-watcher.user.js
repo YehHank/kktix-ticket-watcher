@@ -126,7 +126,7 @@
             console.log('🔄 自動刷新頁面（使用者未互動）');
             location.reload();
         } else {
-            console.log('🛑 偵測到使用者互動，自動刷新取消');
+            alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。');
         }
     }, RELOAD_INTERVAL);
 })();
