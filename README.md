@@ -1,6 +1,6 @@
-# 🎫 KKTIX 報名監控器 + Power Automate Webhook 整合版
+# 🎫 KKTIX 剩票監控器 + Power Automate Webhook 整合版
 
-這是一個 Tampermonkey 腳本，能夠在你打開 KKTIX 報名頁時，自動監控票券是否有剩餘票。如果有票，會透過 Webhook 將資訊傳送到你設定好的 Power Automate 流程，發送 Adaptive Card 訊息到 Teams、Email 或任何你設定的流程！
+這是一個 Tampermonkey 腳本，能夠在你打開 KKTIX 購票頁時，自動監控票券是否有剩餘票。如果有票，會透過 Webhook 將資訊傳送到你設定好的 Power Automate 流程，發送 Adaptive Card 訊息到 Teams、Email 或任何你設定的流程！
 
 ---
 
