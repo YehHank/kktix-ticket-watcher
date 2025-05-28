@@ -48,10 +48,13 @@ localStorage.removeItem('kk_webhook_url');
 打開 Power Automate 網站：
 👉 https://make.powerautomate.com
 
-1. 在左側選單中點選 「解決方案」（Solutions）
+1. 在左側選單中點選 「我的流程」（Solutions）
 2. 點右上角 「匯入」（Import）
-3. 上傳你手上的 .zip 檔案（例如 取得webhook資訊張貼在聊天群組.zip）
+3. 上傳 .zip 檔案（取得webhook資訊張貼在聊天群組.zip）
 4. 等待掃描完畢後，會看到流程名稱與使用的連線：
 5. 若提示你建立/更新連線，請依照提示登入帳號（例如 Microsoft Teams）
 6. 完成後按下「匯入」按鈕
-7. 匯入成功後，到「我的流程」中即可看到該流程，點擊「編輯」即可自訂你要的內容！
+7. 匯入成功後進行編輯，點擊「收到 Teams webhook 要求時」步驟，取得HTTP URL(Webhook URL)
+8. 點擊「在聊天室或管道中張貼訊息」步驟，自訂你要張貼的聊天室
+9. 儲存後記得「開啟」流程
+10. 到「我的流程」中即可看到該流程已啟用
