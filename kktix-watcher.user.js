@@ -112,19 +112,29 @@
     // 一進頁面就執行一次
     fetchAndSend();
 
-    let shouldReload = true;
+let shouldReload = true;
+let warnedOnce = false;
 
-    // 只要用戶點滑鼠、鍵盤輸入、點螢幕，就暫停自動刷新
-    window.addEventListener('click', () => { shouldReload = false; alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。'); });
-    window.addEventListener('keydown', () => { shouldReload = false; alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。'); });
-    window.addEventListener('touchstart', () => { shouldReload = false; alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。'); });
+function cancelReloadByUser() {
+    shouldReload = false;
+    if (!warnedOnce) {
+        alert('🛑 偵測到使用者互動，自動刷新已取消。若要重新監控，請手動重新整理後不要操作滑鼠、鍵盤或觸控。');
+        warnedOnce = true;
+    } else {
+        console.log('🛑 已取消自動刷新（再次互動，不再提醒）');
+    }
+}
 
-    // 每 1 分鐘自動刷新頁面（除非使用者有互動）
-    const RELOAD_INTERVAL = 10000;
-    setTimeout(() => {
-        if (shouldReload) {
-            console.log('🔄 自動刷新頁面（使用者未互動）');
-            location.reload();
-        }
-    }, RELOAD_INTERVAL);
+window.addEventListener('click', cancelReloadByUser);
+window.addEventListener('keydown', cancelReloadByUser);
+window.addEventListener('touchstart', cancelReloadByUser);
+
+// 每 10 秒自動刷新頁面（除非使用者有互動）
+const RELOAD_INTERVAL = 10000;
+setTimeout(() => {
+    if (shouldReload) {
+        console.log('🔄 自動刷新頁面（使用者未互動）');
+        location.reload();
+    }
+}, RELOAD_INTERVAL);
 })();
