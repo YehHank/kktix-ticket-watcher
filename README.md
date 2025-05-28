@@ -29,7 +29,7 @@ https://kktix.com/events/*/registrations/new
 
 ## 🧪 初次使用教學
 
-1. 打開任意一個 KKTIX 報名頁（ex: https://kktix.com/events/xxx/registrations/new）
+1. 打開任意一個 KKTIX 購票頁
 2. 腳本會跳出一個輸入框，讓你貼上 Power Automate 的 Webhook URL
 3. 貼上後會儲存到 localStorage，之後就自動執行
 4. 有票 → 傳送 webhook，沒票 → 安靜潛水
