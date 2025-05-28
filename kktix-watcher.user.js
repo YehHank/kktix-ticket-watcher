@@ -112,9 +112,21 @@
     // 一進頁面就執行一次
     fetchAndSend();
 
-    // 每 1 分鐘重新整理頁面
+    let shouldReload = true;
+
+    // 只要用戶點滑鼠、鍵盤輸入、點螢幕，就暫停自動刷新
+    window.addEventListener('click', () => { shouldReload = false; });
+    window.addEventListener('keydown', () => { shouldReload = false; });
+    window.addEventListener('touchstart', () => { shouldReload = false; });
+
+    // 每 1 分鐘自動刷新頁面（除非使用者有互動）
     const RELOAD_INTERVAL = 60000;
     setTimeout(() => {
-        location.reload();
+        if (shouldReload) {
+            console.log('🔄 自動刷新頁面（使用者未互動）');
+            location.reload();
+        } else {
+            console.log('🛑 偵測到使用者互動，自動刷新取消');
+        }
     }, RELOAD_INTERVAL);
 })();
