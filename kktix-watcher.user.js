@@ -2,7 +2,7 @@
 // @name         KKTIX 票券監控送到 TEAMS
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  每 1 分鐘傳送資料到 TEAMS webhook
+// @description  每 10 秒傳送資料到 TEAMS webhook
 // @match        https://kktix.com/events/*/registrations/new
 // @grant        none
 // ==/UserScript==
@@ -115,18 +115,16 @@
     let shouldReload = true;
 
     // 只要用戶點滑鼠、鍵盤輸入、點螢幕，就暫停自動刷新
-    window.addEventListener('click', () => { shouldReload = false; });
-    window.addEventListener('keydown', () => { shouldReload = false; });
-    window.addEventListener('touchstart', () => { shouldReload = false; });
+    window.addEventListener('click', () => { shouldReload = false; alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。'); });
+    window.addEventListener('keydown', () => { shouldReload = false; alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。'); });
+    window.addEventListener('touchstart', () => { shouldReload = false; alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。'); });
 
     // 每 1 分鐘自動刷新頁面（除非使用者有互動）
-    const RELOAD_INTERVAL = 60000;
+    const RELOAD_INTERVAL = 10000;
     setTimeout(() => {
         if (shouldReload) {
             console.log('🔄 自動刷新頁面（使用者未互動）');
             location.reload();
-        } else {
-            alert('🛑 偵測到使用者互動，自動刷新取消，若要重新監控請重新整理後不點滑鼠、鍵盤輸入、點螢幕操作。');
         }
     }, RELOAD_INTERVAL);
 })();
